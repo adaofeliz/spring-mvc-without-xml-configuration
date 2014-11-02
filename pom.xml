@@ -8,5 +8,77 @@
     <artifactId>spring-mvc-without-xml-config</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>war</packaging>
+
+    <properties>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- JDK and JRE Version-->
+        <java.version>1.7</java.version>
+
+        <!-- Spring MVC and Javax Servlet -->
+        <spring-framework.version>4.1.1.RELEASE</spring-framework.version>
+        <servlet.version>3.1.0</servlet.version>
+
+        <!-- Build Plugins -->
+        <maven-compiler.version>3.2</maven-compiler.version>
+        <maven-war.version>2.5</maven-war.version>
+        <tomcat.version>2.2</tomcat.version>
+
+    </properties>
+
+    <dependencies>
+
+        <!-- Spring MVC and Javax Servlet -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-compiler-plugin</artifactId>
+ <version>${maven-compiler.version}</version>
+ <configuration>
+  <source>${java.version}</source>
+  <target>${java.version}</target>
+ </configuration>
+</plugin>
+
+<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-war-plugin</artifactId>
+ <version>${maven-war.version}</version>
+ <configuration>
+  <failOnMissingWebXml>false</failOnMissingWebXml>
+ </configuration>
+</plugin>
+
+<plugin>
+ <groupId>org.apache.tomcat.maven</groupId>
+ <artifactId>tomcat7-maven-plugin</artifactId>
+ <version>${tomcat.version}</version>
+ <configuration>
+  <port>8080</port>
+  <path>/</path>
+ </configuration>
+</plugin>
+
+        </plugins>
+    </build>
 
 </project>
